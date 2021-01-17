@@ -49,3 +49,24 @@ SELECT
 	MAX(Vendas.ShipDate) -- A ultima data 
 FROM FactResellerSales Vendas (nolock)
 )) -- A ultima data do bd
+
+-- DATEDIFF (Diferenca entre datas)
+SELECT
+	Colab.EmployeeKey,
+	Colab.FirstName,
+	Colab.BirthDate,
+	DataHoje = GETDATE(),
+	IDADE = DATEDIFF(YY, Colab.BirthDate, GETDATE()), -- quantos anos eu tenho entre a data do aniversario e hoje
+	
+	CLUSTER_IDADE =
+		CASE
+			WHEN DATEDIFF(YY, Colab.BirthDate, GETDATE()) >= 60 THEN '60+'
+			WHEN DATEDIFF(YY, Colab.BirthDate, GETDATE()) > 40 THEN '40-59'
+			WHEN DATEDIFF(YY, Colab.BirthDate, GETDATE()) > 30 THEN '30-49'
+			ELSE '30-'
+		END
+		
+
+FROM DimEmployee Colab (nolock)
+--WHERE
+	--DATEDIFF(YY, Colab.BirthDate, GETDATE()) >= 30
