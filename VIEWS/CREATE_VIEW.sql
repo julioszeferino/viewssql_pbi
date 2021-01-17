@@ -1,0 +1,15 @@
+CREATE VIEW V_PQ_PESSOAS AS
+
+SELECT 
+	ID = COLAB.EmployeeKey,
+	NUMDOC = COLAB.EmployeeNationalIDAlternateKey,
+	NOME = CONCAT(COLAB.FirstName,COLAB.MiddleName,COLAB.LastName),
+	ANIVERSARIO = BirthDate,
+	DEPARTAMENTO = COLAB.DepartmentName,
+	FUNCAO = COLAB.Title,
+	STATUS_CIVIL = COLAB.MaritalStatus,
+	GENERO = COLAB.Gender,
+	DT_AMISSAO = CONVERT(VARCHAR(8), COLAB.StartDate, 112),
+	DT_DEMISSAO = CONVERT(VARCHAR(8), COLAB.EndDate, 112)
+
+FROM DimEmployee COLAB (NOLOCK)

@@ -1,0 +1,2 @@
+Não pode ser usada em views e em direct query.
+Para o servidor, é preciso tomar cuidado.

@@ -1,0 +1,32 @@
+-- CRIAR TABELA PARA RECEBER DADOS
+CREATE TABLE Z_CARGA_FATURAMENTO (
+	ProductKey INT,
+	EmployeeKey INT,
+	ExtendedAmount FLOAT,
+	ShipDate DATE
+)
+
+-- VISUALIZAR TABELA
+SELECT * FROM Z_CARGA_FATURAMENTO
+
+
+-- LIMPAR A TABELA
+TRUNCATE TABLE Z_CARGA_FATURAMENTO
+
+/*
+É importante limpar a tabela, para inserir os dados atuais.
+*/
+
+-- INSERINDO DADOS
+INSERT INTO Z_CARGA_FATURAMENTO
+	SELECT
+		ProductKey,
+		EmployeeKey,
+		ExtendedAmount,
+		ShipDate
+
+	FROM FactResellerSales
+
+
+-- VISUALIZAR TABELA
+SELECT * FROM Z_CARGA_FATURAMENTO

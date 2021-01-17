@@ -1,0 +1,1 @@
+ORDER BY e Variaveis não podem estar dentro da view.
